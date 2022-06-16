@@ -1,0 +1,74 @@
+<div>
+    <div class="row">
+        <form style="margin-top: 20px; margin-left: 30px ;" (ngSubmit)="gainersByDate()">
+            <div class="form-row align-items-center row">
+                <div class="row">
+                    <div class="col-3">
+                        <label class="sr-only mb-3" for="inlineFormInputName">Name</label>
+                        <input type="date" class="form-control" id="inlineFormInputName" [formControl]="date"
+                            name="date" placeholder="Enter Date">
+                    </div>
+                    <!-- <div class="col-3">
+                        <label class="sr-only mb-3" for="inlineFormInputName">Name</label>
+                        <input type="text" class="form-control" id="inlineFormInputName" ngModel name="firstName" placeholder="Enter Date">
+                    </div> -->
+                </div>
+                <div class="row">
+                    <div class="col-3 mt-3">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="row">
+        <div class="col">
+            <!-- ngTemplate for error Message-->
+            <ng-template #errorMessageTemp [ngIf]="displayErrorMessage()">
+                <div class="text-danger m-4">
+                    <h4>{{errorMessage}} {{gainer.Date | date}}</h4>
+                </div>
+            </ng-template>
+
+            <!-- ng Template for table -->
+            <ng-template #resultsTable [ngIf]="displayGainersTable()">
+                <div class="table table-striped table-hover .table-responsive m-4">
+                    <thead>
+                        <tr class="text-center">
+                            <th scope="col">S.No</th>
+                            <th scope="col">Company</th>
+                            <th scope="col">Change Percentage</th>
+                            <th scope="col">Current Price</th>
+                            <th scope="col">Last 1 Days Price</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Comments</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let company of companies ; let sno=index" class="text-center">
+                            <th scope="row">{{sno+1}}</th>
+                            <td>{{company.Company}}</td>
+                            <td>{{company.Change_Percent}}</td>
+                            <td>{{company.Current_Price}}</td>
+                            <td>{{company.Last_1_Days_Price}}</td>
+                            <td>{{company.date | date}}</td>
+                            <td>{{company.comments}}</td>
+                            <td>
+                                <button *ngIf="company.comments != null" class="btn btn-warning" (click)="addOrUpdateComments()">
+                                    Update Comments
+                                </button>
+                                <button *ngIf="company.comments == null" class="btn btn-success" (click)="addOrUpdateComments()">
+                                    Add Comments
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </div>
+            </ng-template>
+        </div>
+        <div class="col-3" *ngIf="addingComments">
+
+        </div>
+    </div>
+</div>
