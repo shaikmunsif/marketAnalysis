@@ -1,0 +1,35 @@
+<table class="table table-success table-hover">
+    <thead class="table-light">
+        <tr>
+            <th scope="col" colspan="5" class="text-center" >{{ companyName }}</th>
+        </tr>
+        <tr>
+            <th scope="col" class="text-center"> S.No </th>
+            <th scope="col" class="text-center"> Change Percent</th>
+            <th scope="col" class="text-center"> Current Price</th>
+            <th scope="col" class="text-center"> Last 1 Days Price</th>
+            <th scope="col" class="text-center"> Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let company of data;let i=index">
+            <th scope="row">{{i+1}}</th>
+            <td>{{company.Change_Percent}}</td>
+            <td>{{company.Current_Price}}</td>
+            <td>{{company.Last_1_Days_Price}}</td>
+            <td>{{company.Date | date}}</td>
+          </tr>
+          <tr>
+            <th scope="col" colspan="5" >Comments</th>
+        </tr>
+          <tr>
+            <td colspan="5" >{{ comments }}</td>
+        </tr>
+    </tbody>
+</table>
+<hr>
+<mat-dialog-actions align="center">
+    <button mat-dialog-close class="btn btn-danger" >
+        Close
+    </button>
+</mat-dialog-actions>

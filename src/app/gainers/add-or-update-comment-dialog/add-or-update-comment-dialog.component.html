@@ -1,0 +1,70 @@
+<h2 mat-dialog-title>
+    Add Or Update Comments
+</h2>
+
+<mat-dialog-content>
+    <form>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="company">Company</label>
+                    <input type="text" class="form-control" id="company" aria-describedby="company" [value]="data.Company" [disabled]="true">
+                  </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="changePercent">Change Percent</label>
+                    <input type="text" class="form-control" id="changePercent" [value]="data.Change_Percent" aria-describedby="Change Percent" [disabled]="true">
+                  </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label for="currentPrice">Current Price</label>
+                    <input type="text" class="form-control" id="currentPrice" [value]="data.Current_Price" aria-describedby="Current Price" [disabled]="true">
+                  </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="last1DayPrice">Last1 Day Price</label>
+                    <input type="text" class="form-control" id="last1DayPrice" [value]="data.Last_1_Days_Price" aria-describedby="last 1 Days Price" [disabled]="true">
+                  </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label for="date">Date</label>
+                    <input type="date" class="form-control" [value]="data.Date | date:'yyyy-MM-dd' " id="date" aria-describedby="Date" [disabled]="true">
+                  </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="text">Comments</label>
+                    <input type="text" [(ngModel)]="tempComments" class="form-control" name="Comments" id="Comments" [value]="data.Comments" aria-describedby="Comments" [disabled]="false">
+                 </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col" *ngIf="updatedCommmentsApiResponse.error != '' ">
+                    <div class="text-danger">
+                        <span>
+                            {{updatedCommmentsApiResponse.error}}
+                        </span>
+                    </div>
+            </div>
+        </div>
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="center">
+    <button mat-dialog-close class="btn btn-danger" >
+        Cancel
+    </button>
+    <button class="btn btn-success m-2" (click)="saveComments(data)">
+        Save Comments
+    </button>
+</mat-dialog-actions>

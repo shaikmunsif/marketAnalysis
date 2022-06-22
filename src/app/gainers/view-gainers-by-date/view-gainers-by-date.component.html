@@ -1,17 +1,28 @@
-<div>
+
+<div class="flex-container">
     <div class="row">
         <form style="margin-top: 20px; margin-left: 30px ;" (ngSubmit)="gainersByDate()">
             <div class="form-row align-items-center row">
                 <div class="row">
                     <div class="col-3">
-                        <label class="sr-only mb-3" for="inlineFormInputName">Name</label>
+                        <!-- <label class="sr-only mb-3" for="inlineFormInputName">Name</label>
                         <input type="date" class="form-control" id="inlineFormInputName" [formControl]="date"
-                            name="date" placeholder="Enter Date">
+                            name="date" placeholder="Enter Date"> -->
+                        <!-- Material Date Picker AutoComplete -->
+                        <form class="example-form" (ngSubmit)="gainersByDate()">
+                            <mat-form-field class="example-full-width" appearance="fill">
+                                <mat-hint>YYYY/MM/DD</mat-hint>
+                                <mat-label>Choose a Date</mat-label>
+                                <input type="text" placeholder="Select Date" aria-label="Date" matInput
+                                    [formControl]="date" [matAutocomplete]="auto">
+                                <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                                    <mat-option *ngFor="let option of dates" [value]="option.date | date:'yyyy-MM-dd'">
+                                        {{option.date | date:'yyyy-MM-dd'}}
+                                    </mat-option>
+                                </mat-autocomplete>
+                            </mat-form-field>
+                        </form>
                     </div>
-                    <!-- <div class="col-3">
-                        <label class="sr-only mb-3" for="inlineFormInputName">Name</label>
-                        <input type="text" class="form-control" id="inlineFormInputName" ngModel name="firstName" placeholder="Enter Date">
-                    </div> -->
                 </div>
                 <div class="row">
                     <div class="col-3 mt-3">
@@ -48,17 +59,23 @@
                     <tbody>
                         <tr *ngFor="let company of companies ; let sno=index" class="text-center">
                             <th scope="row">{{sno+1}}</th>
-                            <td>{{company.Company}}</td>
+                            <td>
+                                <a (click)="viewGainer(company)" class="link-dark">
+                                    {{company.Company}}
+                                </a>
+                            </td>
                             <td>{{company.Change_Percent}}</td>
                             <td>{{company.Current_Price}}</td>
                             <td>{{company.Last_1_Days_Price}}</td>
-                            <td>{{company.date | date}}</td>
-                            <td>{{company.comments}}</td>
+                            <td>{{company.Date | date}}</td>
+                            <td>{{company.Comments}}</td>
                             <td>
-                                <button *ngIf="company.comments != null" class="btn btn-warning" (click)="addOrUpdateComments()">
+                                <button *ngIf="company.Comments != '' " class="btn btn-warning"
+                                    (click)="addOrUpdateComments(company)">
                                     Update Comments
                                 </button>
-                                <button *ngIf="company.comments == null" class="btn btn-success" (click)="addOrUpdateComments()">
+                                <button *ngIf="company.Comments == '' " class="btn btn-success"
+                                    (click)="addOrUpdateComments(company)" >
                                     Add Comments
                                 </button>
                             </td>
@@ -67,8 +84,30 @@
                 </div>
             </ng-template>
         </div>
-        <div class="col-3" *ngIf="addingComments">
-
-        </div>
     </div>
 </div>
+
+<!-- <button class="btn btn-primary" (click)="openDialog()">Open dialog</button> -->
+
+<!-- Button trigger modal
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#AddCommentsModal">
+    Launch demo modal
+  </button>
+   -->
+  <!-- Modal
+  <div class="modal fade" id="AddCommentsModal" tabindex="-1" aria-labelledby="AddCommentsModal" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-danger" id="AddCommentsModalLabel">Comments</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-danger">
+         Therichpost.com
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div> -->
