@@ -1,0 +1,17 @@
+[33mcommit cbc12505ba8ef75cbf5db27806aa5d92d6bd18f8[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: shaikmunsif <shaikmunsif4@gmail.com>
+Date:   Thu Jun 16 11:57:12 2022 +0530
+
+    completed search gainers by date functionality
+
+[33mcommit bde204c55808eaf0d24c1dfa1aa430415fcd5bdf[m
+Author: shaikmunsif <shaikmunsif4@gmail.com>
+Date:   Tue Jun 14 15:40:30 2022 +0530
+
+    installed bootstrap
+
+[33mcommit f1e79baf45ae2c356afab24f69e8c85efe578e8b[m
+Author: shaikmunsif <shaikmunsif4@gmail.com>
+Date:   Tue Jun 14 15:33:36 2022 +0530
+
+    initial commit

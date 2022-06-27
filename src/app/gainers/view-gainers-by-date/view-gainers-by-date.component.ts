@@ -81,7 +81,7 @@ export class ViewGainersByDateComponent implements OnInit {
 
   addOrUpdateComments(company:Gainer) {
     const dialogRef = this.dialog.open(AddOrUpdateCommentDialogComponent,{
-      data:company
+      data:company,
     },);
     console.log("data to be sent to modal is: ", company);
 
@@ -104,6 +104,8 @@ export class ViewGainersByDateComponent implements OnInit {
       console.table(data.companies);
       const dialogRef = this.dialog.open(ViewGainerComponent,{
         data : data.companies,
+        // maxHeight : '600px',
+        // maxWidth : '800px'
       })
       dialogRef.afterClosed().subscribe(result =>{
         console.log('Dialog result :', result)

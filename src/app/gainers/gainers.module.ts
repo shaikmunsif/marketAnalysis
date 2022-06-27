@@ -18,6 +18,7 @@ import { AddOrUpdateCommentDialogComponent } from './add-or-update-comment-dialo
 import { UpdatedCommentsMessageComponent } from './updated-comments-message/updated-comments-message.component';
 import { ViewGainerComponent } from './view-gainer/view-gainer.component';
 
+
 @NgModule({
   declarations: [
     GainersComponent,

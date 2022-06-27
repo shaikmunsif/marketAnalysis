@@ -23,10 +23,17 @@
             <th scope="col" colspan="5" >Comments</th>
         </tr>
           <tr>
-            <td colspan="5" >{{ comments }}</td>
+            <td colspan="5">{{ comments }}</td>
         </tr>
     </tbody>
 </table>
+<div class="container">
+    <div class="row">
+        <div class="charts bg-light">
+            <canvas id="myChart"></canvas>
+        </div>
+    </div>
+</div>
 <hr>
 <mat-dialog-actions align="center">
     <button mat-dialog-close class="btn btn-danger" >
